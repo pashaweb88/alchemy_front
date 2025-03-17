@@ -1,0 +1,19 @@
+.item {
+    flex-basis: 48%;
+    position: relative;
+
+    .content {
+        position: absolute;
+        padding: 0 5px;
+        height: 85%;
+        top: 15%;
+        left: 0;
+
+        .divider {
+            display: block;
+            height: 100%;
+            border: 1px solid white;
+        }
+    }
+
+}

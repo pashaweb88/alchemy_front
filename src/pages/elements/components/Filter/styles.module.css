@@ -1,0 +1,22 @@
+
+.form {
+    position: relative;
+    flex-basis:  80.5%;
+    .input {
+        position: absolute;
+        height: 72%;
+        top: 14%;
+        left: 17%;
+        width: 74%;
+        background-color: transparent;
+        border: none;
+        &:focus {
+            outline: none;
+        }
+    }
+
+}
+.filter {
+    flex-basis: 18.5%;
+    flex-shrink: 0;
+}

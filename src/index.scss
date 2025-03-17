@@ -1,0 +1,50 @@
+
+:root {
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --spacing-05x: 2px;
+  --spacing-1x: 4px;
+  --spacing-2x: 8px;
+  --spacing-3x: 12px;
+  --spacing-4x: 16px;
+  --spacing-5x: 20px;
+  --spacing-6x: 24px;
+  --spacing-8x: 32px;
+  --spacing-10x: 40px;
+  --spacing-12x: 48px;
+  --spacing-14x: 56px;
+  --spacing-16x: 64px;
+  --spacing-18x: 72px;
+  --spacing-20x: 80px;
+
+  --color-content-primary: '#EAD0A5';
+}
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+html, body {
+  width: 100%;
+  background-color: black;
+
+}
+body {
+  font-family: "SFUI";
+  font-weight: 400;
+  font-size: 10px;
+}
+img{
+  width: 100%;
+  display: block;
+}

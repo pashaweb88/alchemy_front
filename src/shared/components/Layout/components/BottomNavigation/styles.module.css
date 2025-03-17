@@ -1,0 +1,52 @@
+.wrapper {
+    width: 359px;
+    position: absolute;
+    bottom: 20px;
+    left: calc(50% - 359px/2);
+    z-index: 9999;
+    .relative {
+        position: relative;
+        .blur {
+            filter: blur(20px);
+        }
+        .frame {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .nav {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            padding: 5px 21px 2px;
+            align-items: stretch;
+            justify-content: center;
+            .item {
+                flex-basis: 20%;
+                position: relative;
+                .active {
+                    opacity: 0;
+                    height: 100%;
+                    &._active {
+                        opacity: 1;
+                    }
+                }
+                .content {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                }
+            }
+        }
+    }
+
+}

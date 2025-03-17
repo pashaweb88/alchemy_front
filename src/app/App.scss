@@ -1,0 +1,59 @@
+.app {
+  display: flex;
+  height: 100vh; // 100vh;
+  max-width: 400px;
+  width: 100%;
+  margin: 0 auto;
+  background: linear-gradient(180deg, #000000 0%, #390A85 100%);
+  overflow: hidden;
+  max-height: 100vh; // 100vh;
+
+  &::before {
+    position: absolute;
+    content: '';
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(180deg, #06010D 14.34%, #372651 54.17%, #070210 100%);
+    z-index: 1;
+  }
+
+  &__content {
+    width: 100%;
+    z-index: 3;
+  }
+}
+
+.dev {
+  position: fixed;
+  right: 40px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  top: 40px;
+  background-color: #7a00ff;
+  border-radius: 9px;
+  color: #fff;
+  width: 50px;
+  height: 29px;
+  z-index: 10;
+}
+
+.default-layout {
+  position: relative;
+  height: 100%;
+
+  &__content {
+    height: 100%;
+  }
+
+  &__footer {
+    position: fixed;
+    bottom: 25px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 100%;
+    z-index: 2;
+  }
+}

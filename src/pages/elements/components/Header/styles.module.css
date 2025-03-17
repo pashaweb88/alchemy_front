@@ -1,0 +1,16 @@
+
+.header {
+    position: relative;
+
+    .content {
+        border: 1px solid blue;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+
+        .coin {
+            width: 60px;
+        }
+    }
+}
