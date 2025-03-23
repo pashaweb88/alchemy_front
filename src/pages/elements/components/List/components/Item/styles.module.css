@@ -6,9 +6,12 @@
         position: absolute;
         padding: 0 5px;
         height: 85%;
-        top: 15%;
+        top: 3%;
         left: 0;
-
+        .counter {
+            font-family: 'Gothic one';
+            font-size: 11px;
+        }
         .divider {
             display: block;
             height: 100%;

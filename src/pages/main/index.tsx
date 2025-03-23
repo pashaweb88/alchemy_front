@@ -11,13 +11,11 @@ import styles from './styles.module.css';
 import clsx from 'clsx';
 import { spacing } from '@shared/mixins/MixSpacing';
 import { useUserStore } from '@shared/models/user';
-import formatNumber from '@shared/utils/format-sum-to-k';
+import { formatNumber } from '@shared/utils/format-sum-to-k';
 
 export const MainPage = () => {
-  // const handleClick = () => {};
   const { user } = useUserStore();
-  const p = new Date();
-  console.log(p.toString());
+
   return (
     <Layout>
       <Flex style={{ height: '100%' }} direction="column" justify="space-between" fullWidth>
@@ -56,7 +54,7 @@ export const MainPage = () => {
           </Flex>
         </Flex>
       </Flex>
-      {/*{user?.isClaimReady && <ClaimModal />}*/}
+
       {user?.isClaimReady && <ClaimModal />}
     </Layout>
   );

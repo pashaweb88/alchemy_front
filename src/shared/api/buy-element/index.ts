@@ -1,9 +1,9 @@
 import request from '@shared/utils/request';
 
 type Data = {
-  id: number;
   name: string;
   count: number;
+  name_rus: string;
 };
 export const buyElement = (data: Data) =>
   request<any>('/api/buy-element', {

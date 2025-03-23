@@ -40,7 +40,6 @@ export const ElementModal: FC<ElementModalProps> = ({ onSuccessBuy }) => {
 
   const { currentElementModal } = useElementsStore();
 
-  console.log(currentElementModal);
   const cover = `${import.meta.env.VITE_APP_HOST}/elements/${currentElementModal?.name_eng}.webp`;
 
   const [incomeHour] = useMemo(() => {
@@ -58,8 +57,8 @@ export const ElementModal: FC<ElementModalProps> = ({ onSuccessBuy }) => {
     }
 
     const d = await buyElement({
-      id: tgUser?.id,
       name: currentElementModal?.name_eng || '',
+      name_rus: currentElementModal?.name_rus || '',
       count: buyCount
     });
 

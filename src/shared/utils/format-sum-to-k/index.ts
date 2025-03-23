@@ -1,6 +1,6 @@
 import BigNumber from 'bignumber.js';
 
-export const formatNumber = (numString: string, decimals = 1) => {
+export const formatNumber = (numString: string = '', decimals = 1) => {
   const bn = new BigNumber(numString);
   if (bn.isLessThan(1000)) return numString;
 

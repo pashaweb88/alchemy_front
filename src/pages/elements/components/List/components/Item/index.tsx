@@ -5,11 +5,16 @@ import styles from './styles.module.css';
 
 import { ElementCard, InfoContent } from '../../components';
 import { Flex } from '@shared/components/Flex';
+import { spacing } from '@shared/mixins/MixSpacing';
+import { useUserStore } from '@shared/models/user';
 
 interface ItemProps {
   element: Element;
 }
 export const Item: FC<ItemProps> = ({ element }) => {
+  const { user } = useUserStore();
+  const userElementCount =
+    (user?.userElements || []).find(el => el.name === element.name_eng)?.count || 0;
   const clickHandle = () => {
     setElementModal(element);
   };
@@ -19,6 +24,9 @@ export const Item: FC<ItemProps> = ({ element }) => {
     <div onClick={clickHandle} className={styles.item}>
       <img src={frame} alt="element-frame" />
       <div className={styles.content}>
+        <Flex align="center" justify="center" className={spacing({ mb: '2x' })} fullWidth>
+          <p className={styles.counter}>{userElementCount}</p>
+        </Flex>
         <ElementCard src={cover} name={element.name_rus} isNew />
         <Flex align="stretch" justify="space-between" fullWidth noWrap>
           <InfoContent title="Прибыль в час">

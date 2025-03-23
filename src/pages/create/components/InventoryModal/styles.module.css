@@ -1,0 +1,12 @@
+
+.scroll {
+    width: 82%;
+    margin: 5% auto 0;
+    overflow-y:scroll;
+    height: 93%;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}

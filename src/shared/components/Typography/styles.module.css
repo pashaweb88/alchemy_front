@@ -1,0 +1,12 @@
+.base {
+    font-family: "SFUI";
+    font-weight: 400;
+    font-size: 10px;
+
+    &._primary {
+        color: white;
+    }
+    &._secondary {
+        color: #EBD09B;
+    }
+}

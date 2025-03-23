@@ -13,15 +13,23 @@ export type Element = {
   payback: string;
   income_hour: string;
   income_minute: string;
+  count: number;
+};
+
+type UserElementsData = {
+  [key in string]: {
+    totalElements: number;
+    openedElements: (Element | undefined)[];
+  };
 };
 
 type Store = {
   loading: boolean;
-  elements: { [key in string]: { open: boolean; elements: Element[] } };
+  elements: UserElementsData;
   currentElementModal?: Element;
 };
 
-export const useElementsStore = create<Store>()(() => ({
+export const useElementsStore = create<Store>(() => ({
   loading: false,
   elements: {}
 }));
@@ -32,20 +40,10 @@ export const setElementModal = (currentElementModal: Element | undefined = undef
 export const getElements = async () => {
   try {
     useElementsStore.setState(() => ({ loading: true }));
-    const list = await getElementsList();
-    const items: Element[] = list.result || [];
-
-    const grouped: { [key in string]: { open: boolean; elements: Element[] } } = {};
-
-    for (const item of items) {
-      if (grouped[item.level]) {
-        grouped[item.level].elements.push(item);
-      } else {
-        grouped[item.level] = { open: false, elements: [item] };
-      }
-    }
-    console.log('grouped', grouped);
-    useElementsStore.setState(() => ({ loading: false, elements: grouped }));
+    const response = await getElementsList();
+    const data: UserElementsData = response.result || [];
+    console.log('data', data);
+    useElementsStore.setState(() => ({ loading: false, elements: data }));
   } catch (e) {
     console.error('ELEMENTS REQUEST ERROR: ', e);
     useElementsStore.setState(() => ({ loading: false }));

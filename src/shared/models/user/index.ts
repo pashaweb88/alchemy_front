@@ -4,6 +4,11 @@ import WebApp from '@twa-dev/sdk';
 import getUserInfo from '@shared/api/get-user-info';
 import { LOCAL_STORAGE_KEY_AUTH } from '@shared/constants/storage';
 
+type UserElement = {
+  id: number;
+  name: string;
+  count: number;
+};
 type User = {
   id: number;
   telegramUserId: string;
@@ -18,6 +23,7 @@ type User = {
   claim: Date;
   isClaimReady: boolean;
   hour_profit: string;
+  userElements: UserElement[];
 };
 
 type Store = {

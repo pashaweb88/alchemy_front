@@ -1,0 +1,41 @@
+.backdrop {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    .wrapper {
+        position: relative;
+        width: 100%;
+        height: 90%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &._no-gutter {
+            height: 100%;
+        }
+        .frame {
+            padding: 10px 15px;
+            position: relative;
+            top: 0;
+            left: 0;
+            width: 100%;
+            .close {
+                position: absolute;
+                right: 5px;
+                top: 0;
+                z-index: 999;
+            }
+            .content {
+                width: 82%;
+                margin: 5% auto 0;
+                height: 93%;
+                position: absolute;
+                top: 0;
+                left: 9%;
+                overflow: hidden;
+            }
+        }
+    }
+}

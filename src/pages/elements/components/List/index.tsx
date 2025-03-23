@@ -9,16 +9,24 @@ export const List: FC = () => {
 
   return (
     <div>
-      {Object.entries(elements).map(([level, data], index) => (
-        <div key={index}>
-          <p>Elements level {level}</p>
-          <Flex justify="space-between">
-            {data.elements.map((el, index) => (
-              <Item element={el} key={index} />
-            ))}
-          </Flex>
-        </div>
-      ))}
+      {Object.entries(elements).map(([level, data], index) => {
+        return (
+          <div key={index}>
+            <p>Elements level {level}</p>
+            <Flex justify="space-between">
+              {new Array(data.totalElements).fill(false).map((_, index) => {
+                const element = data.openedElements[index];
+                if (!element) {
+                  return <p>?</p>;
+                }
+                return <Item element={element} key={index} />;
+              })}
+            </Flex>
+          </div>
+        );
+      })}
+
+      <p>asd</p>
     </div>
   );
 };

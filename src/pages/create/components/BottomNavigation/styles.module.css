@@ -1,0 +1,11 @@
+.navigation {
+    margin: 0 auto 100px;
+
+    .item {
+        background-color: #2B174B;
+        border-radius: 10%;
+        padding: 15px;
+        width: 80px;
+        height: 80px;
+    }
+}

@@ -1,0 +1,14 @@
+.wrapper {
+    height: 100%;
+
+
+    .field {
+        flex: 1;
+        /*border: 1px solid orange;*/
+        overflow: hidden;
+    }
+
+    .navigation {
+       margin-bottom: 100px;
+    }
+}

@@ -1,0 +1,23 @@
+.card {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+
+    .badge {
+        width: 20px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 5px;
+        img {
+            width: 30px;
+        }
+    }
+
+    .info {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        padding: 5px;
+    }
+}
