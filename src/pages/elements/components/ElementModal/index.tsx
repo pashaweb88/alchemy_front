@@ -58,7 +58,6 @@ export const ElementModal: FC<ElementModalProps> = ({ onSuccessBuy }) => {
 
     const d = await buyElement({
       name: currentElementModal?.name_eng || '',
-      name_rus: currentElementModal?.name_rus || '',
       count: buyCount
     });
 

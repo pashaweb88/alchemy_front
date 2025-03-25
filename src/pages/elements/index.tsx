@@ -6,9 +6,7 @@ import ElementModal from '@pages/elements/components/ElementModal';
 
 export const Elements: FC = () => {
   const { currentElementModal } = useElementsStore();
-  useEffect(() => {
-    getElements();
-  }, []);
+
   return (
     <Layout hideBackground>
       <Header />

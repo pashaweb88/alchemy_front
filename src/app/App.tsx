@@ -12,12 +12,13 @@ import {
 } from '@shared/constants/routes';
 import { MainPage, Tasks, Feats, Elements, Create } from '@pages';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { getElements } from '@shared/models/elements';
 // import './App.scss';
 const queryClient = new QueryClient();
 
 function App() {
   useEffect(() => {
-    getUserData();
+    Promise.all([getUserData(), getElements()]);
   }, []);
   return (
     <QueryClientProvider client={queryClient}>
