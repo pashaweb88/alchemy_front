@@ -1,8 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router';
-
-import { getUserData } from '@shared/models/user';
 import { useEffect } from 'react';
-
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { MainPage, Tasks, Feats, Elements, Create } from '@pages';
 import {
   ROUTE_ELEMENTS,
   ROUTE_MAIN,
@@ -10,16 +9,17 @@ import {
   ROUTE_POTION,
   ROUTE_TASKS
 } from '@shared/constants/routes';
-import { MainPage, Tasks, Feats, Elements, Create } from '@pages';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { getElements } from '@shared/models/elements';
+import { useResetUserInfo } from '@shared/hooks/useResetUserInfo';
 // import './App.scss';
 const queryClient = new QueryClient();
 
 function App() {
+  const { fetchUserData } = useResetUserInfo();
+
   useEffect(() => {
-    Promise.all([getUserData(), getElements()]);
+    fetchUserData();
   }, []);
+
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>

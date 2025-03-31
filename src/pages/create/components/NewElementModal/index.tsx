@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import Backdrop from '@shared/components/Backdrop';
-import { useGameStore } from '@shared/game/model';
+import { useGameStore } from '../../model';
 import { Flex } from '@shared/components/Flex';
 import { getCoverUrl } from '@shared/utils/get-cover-url';
 import { Card, InfoContent } from './components';
@@ -8,12 +8,24 @@ import { formatNumber } from '@shared/utils/format-sum-to-k';
 import { spacing } from '@shared/mixins/MixSpacing';
 import { Button } from '@shared/components/Button';
 import { useClaimElement } from '../../hooks';
+import { enqueueSnackbar } from 'notistack';
+import { useResetUserInfo } from '@shared/hooks/useResetUserInfo';
 
 export const NewElementModal: FC = () => {
   const { newElement, setNewElement } = useGameStore();
+  const { fetchUserData } = useResetUserInfo();
 
   const cover = getCoverUrl(newElement?.name_eng);
-  const { mutate, isPending } = useClaimElement();
+  const { mutate, isPending } = useClaimElement({
+    onSuccess: () => {
+      fetchUserData();
+      setNewElement(null);
+      enqueueSnackbar({ message: 'Новый элемент добавлен в иныентарь', variant: 'success' });
+    },
+    onError: () => {
+      enqueueSnackbar({ message: 'Ошибка', variant: 'error' });
+    }
+  });
   const submitHandle = () => {
     mutate({ name: newElement?.name_eng || '', count: 1 });
   };

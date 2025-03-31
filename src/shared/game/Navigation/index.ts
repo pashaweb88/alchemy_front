@@ -1,60 +1,94 @@
-import { Container, Graphics, Sprite, Text } from 'pixi.js';
+import { Container } from 'pixi.js';
 import { loader } from '@shared/game/Loader';
-import { game } from '@shared/game';
-import { useGameStore } from '@shared/game/model';
+import { Game } from '@shared/game';
+import { SIZE, OFFSET, MESSAGE_KEY_OPEN_TUTOR, MESSAGE_KEY_OPEN_INVENTORY } from '../constants';
+import { NavItem } from '../NavItem';
 
 export class Navigation extends Container {
   items = [
-    { text: 'Инструкция', texture: loader.textureQuestionIcon, textX: 7 },
-    { text: 'Инвентарь', texture: loader.textureChestIcon, textX: 7 },
-    { text: 'Продать', texture: loader.textureBagIcon, textX: 7 },
-    { text: 'Очистить', texture: loader.textureHoleIcon, textX: 7 }
+    { text: 'Инструкция', texture: loader.textureQuestionIcon, textX: 7, type: 'tutor' },
+    { text: 'Инвентарь', texture: loader.textureChestIcon, textX: 7, type: 'inventory' },
+    // { text: 'Продать', texture: loader.textureBagIcon, textX: 7, type: 'sell' },
+    { text: 'Очистить', texture: loader.textureHoleIcon, textX: 7, type: 'clear' }
   ];
-  size = 70;
-  offset = 10;
+  hoverItems = [
+    { text: 'Инвентарь', texture: loader.textureBagOpenIcon, textX: 7, type: 'inventory' },
+    { text: 'Продать', texture: loader.textureSellIcon, textX: 7, type: 'sell' }
+  ];
 
-  constructor() {
+  mainMenu: Container[] = [];
+  asideMenu: Container[] = [];
+  activePosY = 0;
+
+  constructor(private readonly game: Game) {
     super();
+    this.activePosY = game.app.canvas.height - 200;
   }
 
-  createItems() {
-    let posX = 0;
-
+  createMainMenu() {
+    const screenCenterX = this.game.app.canvas.width / 2;
+    const navWidth = (74 * 3 + OFFSET * 2) / 2;
+    let posX = screenCenterX - navWidth;
     for (const item of this.items) {
-      const container = new Container();
-      container.x = posX;
-      container.y = 0;
+      const navItem = new NavItem(item.texture, item.text);
 
-      const square = new Graphics();
-      square.roundRect(0, 0, this.size, this.size, 10);
-      square.fill(0x2b174b);
-
-      const elementSprite = new Sprite(item.texture);
-      elementSprite.width = 40;
-      elementSprite.height = 40;
-      elementSprite.x = 15;
-      elementSprite.y = 10;
-
-      const text = new Text({
-        text: item.text,
-        style: { fontFamily: 'Sf Ui Display Regular', fontSize: 10, fill: 0xebd09b }
+      navItem.eventMode = 'static';
+      navItem.on('pointerdown', () => {
+        if (item.type === 'tutor') {
+          return window.postMessage({ key: MESSAGE_KEY_OPEN_TUTOR });
+        }
+        if (item.type === 'inventory') {
+          return window.postMessage({ key: MESSAGE_KEY_OPEN_INVENTORY });
+        }
+        if (item.type === 'clear') {
+          return this.game.clearElements();
+        }
       });
-      text.x = item.textX;
-      text.y = 50;
+      navItem.x = posX;
+      navItem.y = this.activePosY;
 
-      container.addChild(square);
-      container.addChild(text);
-      container.addChild(elementSprite);
-      container.eventMode = 'static';
-      container.on('pointerdown', () => {
-        console.log('pointerdown');
-        useGameStore.getState().openInventoryHandle();
-      });
-      this.addChild(container);
-      posX += this.size + this.offset;
+      this.mainMenu.push(navItem);
+      this.game.app.stage.addChild(navItem);
+      posX += SIZE + OFFSET;
     }
 
-    this.x = game.app.canvas.width / 2 - this.width / 2;
-    this.y = game.app.canvas.height - 200;
+    this.x = this.game.app.canvas.width / 2 - this.width / 2;
+    this.y = this.game.app.canvas.height - 200;
+  }
+
+  createAsideMenu() {
+    const screenCenterX = this.game.app.canvas.width / 2;
+    const navWidth = (74 * 2 + OFFSET) / 2;
+    let posX = screenCenterX - navWidth;
+    // const posY = this.game.app.canvas.height - 200;
+
+    for (const item of this.hoverItems) {
+      const navItem = new NavItem(item.texture, item.text);
+      navItem.eventMode = 'static';
+      navItem.itemType = item.type;
+      navItem.x = posX;
+      navItem.y = 1000;
+
+      this.asideMenu.push(navItem);
+      this.game.app.stage.addChild(navItem);
+      posX += SIZE + OFFSET;
+    }
+  }
+
+  setAsideActive() {
+    this.mainMenu.forEach(item => {
+      item.y = 1000;
+    });
+    this.asideMenu.forEach(item => {
+      item.y = this.activePosY;
+    });
+  }
+  setMainActive() {
+    this.mainMenu.forEach(item => {
+      item.y = this.activePosY;
+    });
+    this.asideMenu.forEach(item => {
+      item.y = 1000;
+    });
   }
 }

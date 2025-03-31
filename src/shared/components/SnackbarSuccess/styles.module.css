@@ -1,0 +1,13 @@
+
+.snackbar {
+    border: 1px solid #EBD09B;
+    width: 100%;
+    z-index: 9999;
+    font-size: 12px;
+    padding: 8px;
+    backdrop-filter: blur(10px);
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
