@@ -55,7 +55,7 @@ export const MainPage = () => {
         </Flex>
       </Flex>
 
-      {user?.isClaimReady && <ClaimModal />}
+      <ClaimModal open={user?.isClaimReady} />
     </Layout>
   );
 };

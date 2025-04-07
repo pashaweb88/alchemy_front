@@ -11,7 +11,7 @@ interface CoinTextProps {
 
 export const CoinText: FC<CoinTextProps> = ({ children, coinSize = 20, offsetY = 1 }) => {
   return (
-    <Flex align="center" fullWidth>
+    <Flex align="center">
       <div className={spacing({ mr: '05x' })} style={{ transform: `translateY(${-offsetY}%)` }}>
         <CoinIcon size={coinSize} />
       </div>

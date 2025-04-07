@@ -6,9 +6,10 @@ import { BottomNavigation } from './components';
 interface LayoutProps {
   children?: ReactNode;
   hideBackground?: boolean;
+  hideNavigation?: boolean;
 }
 
-export const Layout: FC<LayoutProps> = ({ children, hideBackground }) => {
+export const Layout: FC<LayoutProps> = ({ children, hideBackground, hideNavigation = false }) => {
   return (
     <div className={styles.base}>
       {!hideBackground && (
@@ -19,7 +20,7 @@ export const Layout: FC<LayoutProps> = ({ children, hideBackground }) => {
 
       <div className={styles.content}>{children}</div>
 
-      <BottomNavigation />
+      {!hideNavigation && <BottomNavigation />}
     </div>
   );
 };

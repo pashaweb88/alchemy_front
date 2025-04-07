@@ -11,7 +11,7 @@ type Result = {
   last_name: string;
 };
 
-type Params = { id: string };
+type Params = { id: string; friend?: string };
 
 export const getUserInfo = (params: Params) =>
   request<Result>('/api/info', {

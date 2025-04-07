@@ -1,22 +1,21 @@
 .item {
-    flex-basis: 48%;
+    flex-basis: 176px;
     position: relative;
-
+    margin-bottom: 8px;
     .content {
         position: absolute;
-        padding: 0 5px;
+        padding: 0 7px;
         height: 85%;
         top: 3%;
         left: 0;
+
         .counter {
             font-family: 'Gothic one';
             font-size: 11px;
         }
         .divider {
-            display: block;
-            height: 100%;
-            border: 1px solid white;
+            align-self: stretch;
+            border: 1px solid rgba(119, 101, 71, 0.56);
         }
     }
-
 }

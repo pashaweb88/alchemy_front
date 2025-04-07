@@ -2,9 +2,13 @@
     position: relative;
     border-radius: 10px;
     overflow:hidden;
-    margin-bottom: 10px;
-    width: 24%;
+    /*margin-bottom: 10px;*/
+    /*width: 24%;*/
+    /*margin-left: 1.33%;*/
     aspect-ratio: 1;
+    &:first-child {
+        margin-left: 0;
+    }
     &._empty {
         background-color: #241C32;
         display: flex;

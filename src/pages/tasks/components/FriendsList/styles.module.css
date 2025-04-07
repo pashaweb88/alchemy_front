@@ -1,0 +1,22 @@
+
+.item {
+    position: relative;
+    margin-top: -8px;
+}
+.content {
+    position: absolute;
+    top: -2px;
+    left: 0;
+    height: 100%;
+}
+
+.avatar {
+    flex-shrink: 0;
+}
+.text {
+    flex-grow: 1;
+}
+
+.cost {
+    flex-shrink: 0;
+}

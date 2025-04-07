@@ -8,7 +8,12 @@
     justify-content: center;
     align-items: center;
     background-color: rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    transform: translateY(-5%);
+    animation: fadeIn 0.3s ease;
+    animation-fill-mode: forwards;
     .wrapper {
+        transform: translateY(-10%);
         position: relative;
         width: 300px;
         .close {
@@ -41,7 +46,7 @@
             }
 
             .divider {
-                border-bottom: 1px solid white;
+                border-bottom: 1px solid rgba(235, 208, 155, 0.17);
             }
         }
 
@@ -104,4 +109,9 @@
         /*    border-radius: inherit;*/
         /*}*/
     }
+}
+
+@keyframes fadeIn {
+    from {transform: translateY(-20px); opacity: 0}
+    to {transform: translateY(0); opacity: 1}
 }

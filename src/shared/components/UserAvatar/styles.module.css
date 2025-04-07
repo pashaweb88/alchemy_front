@@ -1,0 +1,16 @@
+.avatar {
+    position: relative;
+    background: linear-gradient(180deg, #EBD09B 0%, #776547 100%);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 40px;
+    overflow: hidden;
+    .tg {
+        width: 36px;
+        height: 36px;
+        border-radius: 36px;
+    }
+}

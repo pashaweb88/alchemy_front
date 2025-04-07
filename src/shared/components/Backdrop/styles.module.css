@@ -5,6 +5,11 @@
     top: 0;
     left: 0;
     background-color: rgba(0, 0, 0, 0.7);
+    z-index: 999999;
+    opacity: 0;
+    transform: translateY(-15px);
+    animation: fadeIn 0.3s ease;
+    animation-fill-mode: forwards;
     .wrapper {
         position: relative;
         width: 100%;
@@ -38,4 +43,9 @@
             }
         }
     }
+}
+
+@keyframes fadeIn {
+    from {transform: translateY(-15px); opacity: 0}
+    to {transform: translateY(0); opacity: 1}
 }

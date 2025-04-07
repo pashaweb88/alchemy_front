@@ -41,8 +41,7 @@ export const getElements = async () => {
   try {
     useElementsStore.setState(() => ({ loading: true }));
     const response = await getElementsList();
-    const data: UserElementsData = response.result || [];
-    console.log('data', data);
+    const data: any = response.result || [];
     useElementsStore.setState(() => ({ loading: false, elements: data }));
   } catch (e) {
     console.error('ELEMENTS REQUEST ERROR: ', e);

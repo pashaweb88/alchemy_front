@@ -10,3 +10,47 @@
         display: none;
     }
 }
+
+.title {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.37);
+}
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 элемента в ряд */
+    row-gap: 8px;
+    column-gap: 8px;
+}
+
+.input-container {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.search-icon {
+    position: absolute;
+    left: 12px;
+    top: 55%;
+    transform: translateY(-50%);
+    color: #f5e7c5;
+}
+
+.gradient-input {
+    width: 100%;
+    font-family: 'SFUI';
+    padding: 10px 12px 10px 35px;
+    background-color: #0d0921;
+    color: white;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    outline: none;
+    font-size: 16px;
+
+    /* Градиентная рамка */
+    border-image: linear-gradient(45deg, #f5e7c5, #7c6e55) 1;
+    border-image-slice: 1;
+}
+
+.gradient-input::placeholder {
+    color: #aaa;
+}

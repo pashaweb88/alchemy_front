@@ -1,12 +1,18 @@
 import { FC, useState } from 'react';
-import styles from './styles.module.css';
-import frame from './images/frame.png';
-import Button from '@shared/components/Button';
-import claim from '@shared/api/claim';
+import { Button } from '@shared/components/Button';
+import { claim } from '@shared/api/claim';
 import { getUserData } from '@shared/models/user';
 import WebApp from '@twa-dev/sdk';
+import coinClaim from '../../images/coin-claim.png';
+import { Backdrop } from '@shared/components/Backdrop';
+import { Flex } from '@shared/components/Flex';
+import { Typography } from '@shared/components/Typography';
+import { spacing } from '@shared/mixins/MixSpacing';
 
-export const ClaimModal: FC = () => {
+interface ClaimModalProps {
+  open?: boolean;
+}
+export const ClaimModal: FC<ClaimModalProps> = ({ open }) => {
   const [loading, setLoading] = useState(false);
   const clickHandle = async () => {
     try {
@@ -28,18 +34,20 @@ export const ClaimModal: FC = () => {
     }
   };
   return (
-    <div className={styles.modal}>
-      <div className={styles.wrapper}>
-        <img src={frame} alt="frame" />
-
-        <div className={styles.content}>
-          <p>GOOD</p>
-          <Button loading={loading} onClick={clickHandle}>
-            Hola
-          </Button>
-        </div>
-      </div>
-    </div>
+    <Backdrop width={320} open={open}>
+      <Flex gap="s" className={spacing({ px: '1x' })} align="center">
+        <img style={{ transform: 'scale(1.2)' }} src={coinClaim} alt="claim" />
+        <Typography align="center" size={16} weight={600}>
+          Mastery of the elements has earned coins for you
+        </Typography>
+        <Typography styles={{ width: '100%' }} align="center" size={48} weight={600}>
+          3,15К
+        </Typography>
+        <Button loading={loading} onClick={clickHandle}>
+          Claim
+        </Button>
+      </Flex>
+    </Backdrop>
   );
 };
 

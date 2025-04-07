@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { Flex, FlexProps } from '@shared/components/Flex';
+import Typography from '@shared/components/Typography';
 
 type InfoContentProps = {
   title?: string;
@@ -20,9 +21,7 @@ export const InfoContent: FC<InfoContentProps> = ({
   return (
     <Flex direction="column" className={className} fullWidth>
       <Flex justify={justify} align="center">
-        <p color="" style={{ color: titleColor, fontSize: titleSize }}>
-          {title}
-        </p>
+        <Typography styles={{ color: titleColor, fontSize: titleSize }}>{title}</Typography>
       </Flex>
       <Flex justify={justify} align="center">
         {children}

@@ -24,6 +24,8 @@ type User = {
   isClaimReady: boolean;
   hour_profit: string;
   userElements: UserElement[];
+  isDailyReady: boolean;
+  dailyDay: number;
 };
 
 type Store = {
@@ -35,7 +37,7 @@ export const useUserStore = create<Store>()(() => ({
   loading: true
 }));
 
-export const getUserData = async () => {
+export const getUserData = async (friend?: string) => {
   const tgUser = WebApp.initDataUnsafe.user;
 
   useUserStore.setState(() => ({ loading: true }));
@@ -44,20 +46,7 @@ export const getUserData = async () => {
     return;
   }
   try {
-    const auth = await request<{ accessToken?: string }>('/auth/login', {
-      method: 'post',
-      data: {
-        id: tgUser.id,
-        username: tgUser.username,
-        first_name: tgUser.first_name,
-        last_name: tgUser.last_name
-      }
-    });
-    if (auth.result?.accessToken) {
-      localStorage.setItem(LOCAL_STORAGE_KEY_AUTH, auth.result.accessToken);
-    }
-
-    const info = await getUserInfo({ id: tgUser.id.toString() });
+    const info = await getUserInfo({ id: tgUser.id.toString(), friend });
     const data = info.result as any;
 
     useUserStore.setState(prev => ({

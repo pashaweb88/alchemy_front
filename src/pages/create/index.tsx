@@ -1,10 +1,6 @@
 import { FC, useEffect } from 'react';
 import { Layout } from '@shared/components/Layout';
-import { Flex } from '@shared/components/Flex';
-
-import styles from './styles.module.css';
 import { InventoryModal, PixiCanvas, NewElementModal, TutorModal } from './components';
-
 import { Element } from '@shared/models/elements';
 import { game } from '@shared/game';
 import { useGameStore } from './model';
@@ -19,8 +15,6 @@ import {
 } from '@shared/game/constants';
 import { useSnackbar } from 'notistack';
 import useResetUserInfo from '@shared/hooks/useResetUserInfo';
-import Typography from '@shared/components/Typography';
-import { spacing } from '@shared/mixins/MixSpacing';
 
 export const Create: FC = () => {
   const {
@@ -33,7 +27,7 @@ export const Create: FC = () => {
     setNewElement
   } = useGameStore();
   const { fetchUserData } = useResetUserInfo();
-  // const { elements } = useElementsStore();
+
   const { enqueueSnackbar } = useSnackbar();
 
   const onElementChooseHandle = (element: Element) => {
@@ -82,12 +76,10 @@ export const Create: FC = () => {
           width: '100%',
           height: '100%',
           position: 'relative',
-          border: '2px solid blue',
           overflow: 'hidden'
         }}
       >
         <PixiCanvas />
-
       </div>
       {/*<Flex className={styles.wrapper} direction="column" fullWidth>*/}
       {/*  <div className={spacing({ pt: '2x' })}>*/}

@@ -1,0 +1,22 @@
+.title {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.37);
+}
+
+.wrapper {
+    max-width: 360px;
+    width: 100%;
+    margin: 0 auto;
+    padding-bottom: 100px;
+}
+
+.grid {
+    justify-content: space-between;
+
+}
+
+@media screen and (max-width: 360px) {
+    .grid {
+        justify-content: center;
+    }
+}
+

@@ -1,0 +1,1 @@
+export { FrameIcon } from './FrameIcon';

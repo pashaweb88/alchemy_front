@@ -10,22 +10,25 @@ interface BackdropProps {
   widthPercent?: number;
   disableGutter?: boolean;
   onClose?: () => void;
+  width?: number;
 }
 
 export const Backdrop: FC<BackdropProps> = ({
   children,
   open = false,
   widthPercent = 80,
+  width,
   disableGutter = false,
   onClose
 }) => {
   if (!open) {
     return null;
   }
+  const w = width ? `${width}px` : `${widthPercent}%`;
   return (
     <div className={styles.backdrop}>
       <div className={clsx(styles.wrapper, disableGutter && styles['_no-gutter'])}>
-        <div style={{ width: `${widthPercent}%` }} className={styles.frame}>
+        <div style={{ width: w }} className={styles.frame}>
           <img src={frame} alt="frame" />
           <div className={styles.close} onClick={onClose}>
             <CloseIcon size={35} />

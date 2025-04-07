@@ -1,0 +1,30 @@
+
+.task {
+    position: relative;
+    .content {
+        position: absolute;
+        height: 100%;
+        top: 0;
+        left: 0;
+    }
+    .icon {
+        width: 70px;
+        aspect-ratio: 1;
+        flex-shrink: 0;
+        img {
+            width: 100%;
+        }
+
+    }
+    .button {
+        flex-grow: 1;
+        flex-shrink: 0;
+    }
+
+    .title {
+        flex-grow: 1;
+    }
+}
+.disabled {
+    opacity: 0.5;
+}
